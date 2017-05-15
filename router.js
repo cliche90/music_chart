@@ -1,0 +1,51 @@
+module.exports = function () {
+    let express = require('express');
+    let request = require('request');
+    let cheerio = require('cheerio');
+    let router = express.Router();
+
+    let getBodyElement = function (url) {
+        return new Promise(function (resolve, reject) {
+            request(url, function (error, response, body) {
+                if (error) {
+                    console.log(error);
+                    reject('Error!!!');
+                }
+
+                let $ = cheerio.load(body);
+                resolve($);
+            });
+        });
+    }
+
+    let renderCharts = function (res) {
+        let url = "http://www.billboard.com/charts/hot-100";
+        let charts = [];
+
+        getBodyElement(url)
+            .then(function ($) {
+                let songEl = $("div.chart-row__title");
+
+                songEl.each(function (idx) {
+                    let songTitle = $(this).find("h2").text().trim();
+                    let artist = $(this).find("a").text().trim();
+                    let song = {
+                        title: songTitle,
+                        artist: artist
+                    };
+                    charts.push(song);
+                }, function (error) {
+                    console.log(error);
+                });
+
+                // return charts;
+                res.render('charts', {
+                    charts: charts
+                });
+            });
+    }
+
+    router.get('/charts', (req, res) => renderCharts(res));
+
+    return router;
+}
