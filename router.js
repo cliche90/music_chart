@@ -4,9 +4,9 @@ module.exports = function () {
     let cheerio = require('cheerio');
     let router = express.Router();
 
-    let getBodyElement = function (url) {
-        return new Promise(function (resolve, reject) {
-            request(url, function (error, response, body) {
+    let getBodyElement = (url) => {
+        return new Promise((resolve, reject) => {
+            request(url, (error, response, body) => {
                 if (error) {
                     console.log(error);
                     reject('Error!!!');
@@ -18,7 +18,7 @@ module.exports = function () {
         });
     }
 
-    let renderCharts = function (res) {
+    let renderCharts = (res) => {
         let url = "http://www.billboard.com/charts/hot-100";
         let charts = [];
 
@@ -34,11 +34,10 @@ module.exports = function () {
                         artist: artist
                     };
                     charts.push(song);
-                }, function (error) {
-                    console.log(error);
-                });
-
-                // return charts;
+                }, (error) => console.log(error));
+            })
+            .catch(() => console.log('Parsing Error!!'))
+            .then(() => {
                 res.render('charts', {
                     charts: charts
                 });

@@ -1,7 +1,7 @@
 {
   "name": "music_chart",
   "version": "1.0.0",
-  "description": "",
+  "description": "npm install express     npm install pug     npm install request     npm install cheerio",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
