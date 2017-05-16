@@ -27,8 +27,8 @@ module.exports = function () {
                 let songEl = $("div.chart-row__title");
 
                 songEl.each(function (idx) {
-                    let songTitle = $(this).find("h2").text().trim();
-                    let artist = $(this).find("a").text().trim();
+                    let songTitle = $(this).find(".chart-row__song").text().trim();
+                    let artist = $(this).find(".chart-row__artist").text().trim();
                     let song = {
                         title: songTitle,
                         artist: artist

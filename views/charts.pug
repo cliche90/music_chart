@@ -1,9 +1,21 @@
 html
     title THE HOT 100
     head
-    body
-        div
-            ul
-            each song in charts
-                li= song.title + " - " + song.artist
+        script(type="text/javascript", src="/js/jquery-3.2.1.min.js")
+        script(type="text/javascript", src="/js/bootstrap.min.js")
+        link(link rel="stylesheet", type="text/css", href="/css/bootstrap.min.css")
+    body(class="container-fluid")
+        div(class="col-md-8")
+            table(class="table table-striped")
+                thead
+                    tr
+                        th # Rank
+                        th Title
+                        th Artist
+                tbody
+                each song, idx in charts
+                    tr
+                        td= idx + 1
+                        td= song.title
+                        td= song.artist
     
