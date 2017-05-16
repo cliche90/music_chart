@@ -4,18 +4,19 @@ html
         script(type="text/javascript", src="/js/jquery-3.2.1.min.js")
         script(type="text/javascript", src="/js/bootstrap.min.js")
         link(link rel="stylesheet", type="text/css", href="/css/bootstrap.min.css")
-    body(class="container-fluid")
-        div(class="col-md-8")
-            table(class="table table-striped")
+        link(link rel="stylesheet", type="text/css", href="/css/charts.css")
+    body(class="container")
+        div(class="col-md-12")
+            table#music_chart(class="table table-striped")
                 thead
                     tr
                         th # Rank
                         th Title
                         th Artist
                 tbody
-                each song, idx in charts
-                    tr
-                        td= idx + 1
-                        td= song.title
-                        td= song.artist
-    
+                    each song, idx in charts
+                        tr
+                            td#rank= idx + 1
+                            td= song.title
+                            td= song.artist
+        

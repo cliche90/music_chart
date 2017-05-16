@@ -1,0 +1,11 @@
+#music_chart > thead {
+    font-size: 14px;
+}
+
+#music_chart > tbody {
+    font-size: 13px;
+}
+
+th, #rank {
+    text-align: center;
+}
