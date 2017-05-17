@@ -11,10 +11,12 @@ html
             div(class="row")
                 div#list(class="col-md-6")
                     each song, idx in charts
-                        div(class="media")
+                        div(class="media", onclick="playMusic(this)")
                             div(class="media-left")
                                 h3#rank= (idx + 1 < 10) ? "00" + (idx + 1) : (idx + 1 == 100) ? idx + 1 : "0" + (idx + 1)
                             div(class="media-body")
                                 h4(class="media-heading")= song.title
                                 span= song.artist
-                
+    
+
+        script(type="text/javascript", src="/js/charts.js")

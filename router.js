@@ -29,12 +29,10 @@ module.exports = function () {
                 songEl.each(function (idx) {
                     let title = $(this).find(".chart-row__song").text().trim();
                     let artist = $(this).find(".chart-row__artist").text().trim();
-                    // let imageUrl = "" + $(this).find(".chart-row__image").find("[background-image]");
-                    // console.log(imageUrl);
+
                     let song = {
                         title: title,
                         artist: artist
-                        // imageUrl: imageUrl
                     };
 
                     charts.push(song);
