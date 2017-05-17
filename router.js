@@ -40,6 +40,9 @@ module.exports = function () {
             })
             .catch(() => console.log('Parsing Error!!'))
             .then(() => {
+                // let searchUrl = `https://www.youtube.com/results?search_query=${title}-${artist}`
+            })
+            .then(() => {
                 res.render('charts', {
                     charts: charts
                 });
