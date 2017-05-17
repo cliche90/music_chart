@@ -1,11 +1,12 @@
-#music_chart > thead {
-    font-size: 14px;
+#list {
+    overflow-y: scroll;
+    height: 95%;
+    margin: 2.5%
 }
 
-#music_chart > tbody {
-    font-size: 13px;
+#rank {
+    color: darkgray;
+    margin-top: 0px;
+    margin-right: 0px;
 }
 
-th, #rank {
-    text-align: center;
-}

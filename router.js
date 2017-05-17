@@ -24,15 +24,19 @@ module.exports = function () {
 
         getBodyElement(url)
             .then(function ($) {
-                let songEl = $("div.chart-row__title");
+                let songEl = $("div.chart-row__main-display");
 
                 songEl.each(function (idx) {
-                    let songTitle = $(this).find(".chart-row__song").text().trim();
+                    let title = $(this).find(".chart-row__song").text().trim();
                     let artist = $(this).find(".chart-row__artist").text().trim();
+                    // let imageUrl = "" + $(this).find(".chart-row__image").find("[background-image]");
+                    // console.log(imageUrl);
                     let song = {
-                        title: songTitle,
+                        title: title,
                         artist: artist
+                        // imageUrl: imageUrl
                     };
+
                     charts.push(song);
                 }, (error) => console.log(error));
             })
