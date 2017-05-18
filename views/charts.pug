@@ -13,9 +13,9 @@ html
             
         div(class="container")        
             div(class="row")
-                div#list(class="col-md-6")
+                div#list(class="col-md-6 list-group")
                     each song, idx in charts
-                        div(class="media", onclick="playMusic(this)")
+                        div(class="media list-group-item", onclick="playMusic(this)")
                             div(class="media-left")
                                 h3#rank= (idx + 1 < 10) ? "00" + (idx + 1) : (idx + 1 == 100) ? idx + 1 : "0" + (idx + 1)
                             div(class="media-body")

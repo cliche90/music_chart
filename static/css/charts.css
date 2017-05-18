@@ -14,3 +14,7 @@
 .clicked {
     background-color: lightblue;
 }
+
+.media {
+    border: none;
+}
