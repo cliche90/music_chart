@@ -1,3 +1,7 @@
-function playMusic(param) {
-    $(param).addClass("clicked");
+function hovering(param) {
+    $(param).addClass("hovering");
+}
+
+function nonhovering(param) {
+    $(param).removeClass("hovering");
 }
