@@ -18,6 +18,10 @@ module.exports = function () {
         });
     }
 
+    let renderRoot = (res) => {
+        res.render("Hello!!");
+    }
+
     let renderCharts = (res) => {
         let url = "http://www.billboard.com/charts/hot-100";
         let charts = [];
@@ -49,6 +53,7 @@ module.exports = function () {
             });
     }
 
+    router.get('/', (req, res) => renderRoot(res));    
     router.get('/charts', (req, res) => renderCharts(res));
 
     return router;
