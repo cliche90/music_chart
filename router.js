@@ -19,7 +19,7 @@ module.exports = function () {
     }
 
     let renderRoot = (res) => {
-        res.render("Hello!!");
+        res.send("Hello!!");
     }
 
     let renderCharts = (res) => {
