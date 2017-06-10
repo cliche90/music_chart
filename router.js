@@ -52,7 +52,6 @@ module.exports = function () {
             let parsedQString = urlencode(`${title} ${artist}`)
             let surl = `https://www.youtube.com/results?search_query=${parsedQString}`;
 
-
             let ret = {};
 
             request(surl, (error, response, body) => {
@@ -63,16 +62,13 @@ module.exports = function () {
                 }
 
                 let $ = cheerio.load(body);
-                // let anchorUrl = $$("#page-container>#page>#content .item-section>li:first-child .yt-lockup-content>h3.yt-lockup-title>a").attr('href');
                 let anchorUrl = $('.yt-lockup-video a').first().attr('href');
                 let videoId = anchorUrl.replace('/watch?v=', '');
-
-                youtubeUrl = "https://youtu.be/" + videoId;
 
                 ret = {
                     title: title,
                     artist: artist,
-                    url: youtubeUrl
+                    videoId: videoId
                 };
 
                 resolve(ret);
