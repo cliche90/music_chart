@@ -108,7 +108,7 @@ module.exports = function () {
 
     router.get('/', (req, res) => renderRoot(res));
     router.get('/charts', (req, res) => renderCharts(res));
-    router.post('/songChnage', (req, res) => songChange(req, res));
+    router.post('/songChange', (req, res) => songChange(req, res));
 
     return router;
 }
