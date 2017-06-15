@@ -1,8 +1,24 @@
+#row1 {
+    margin-top: 1%;
+    height: 13%;
+}
+
+#row2 {
+    margin-top: 1%;
+    margin-bottom: 2%;
+    height: 80%;
+}
+
+#videoFrame {
+    margin: 0;
+    padding: 0;
+}
+
 #list {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    height: 92%;
-    margin: 2%
+    height: 100%;
+    margin: 0;
 }
 
 #rank {

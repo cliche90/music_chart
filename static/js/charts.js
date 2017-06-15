@@ -18,7 +18,7 @@ let statusCode = {
 function onYouTubeIframeAPIReady() {
 
     player = new YT.Player('videoFrame', {
-        height: 'auto',
+        height: '100%',
         width: '100%',
         videoId: '',
         playerVars : {
@@ -54,7 +54,7 @@ function onPlayerStateChange(event) {
                   event.data == -1 ? '시작되지 않음' : '예외';
 
     if (event.data == YT.PlayerState.CUED)          event.target.playVideo();
-    else if (event.data == YT.PlayerState.ENDED)    runNextSong();
+    // else if (event.data == YT.PlayerState.ENDED)    runNextSong();
 
     console.log('onPlayerStateChange 실행: ' + playerState);
 }

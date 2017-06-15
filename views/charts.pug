@@ -14,9 +14,9 @@ html
     body
             
         div(class="container")        
-            div(class="row")
+            div#row1(class="row")
                 div#videoFrame(class="col-md-12")
-            div(class="row")
+            div#row2(class="row")
                 div#list(class="col-md-12 list-group")
                     each song, idx in charts
                         a(class="media list-group-item", href="#", onclick="changeSong(this)")
