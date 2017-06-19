@@ -41,8 +41,10 @@ function onPlayerError(event) {
 function onPlayerReady(event) {
     console.log('onPlayerReady 실행');
     // 플레이어 자동실행 (주의: 모바일에서는 자동실행되지 않음)
-    $(".media").first().click();
+    // $(".media").first().click();
+
     // event.target.playVideo();
+    changeSong(1);
 }
 
 function onPlayerStateChange(event) {
@@ -53,29 +55,29 @@ function onPlayerStateChange(event) {
                   event.data == YT.PlayerState.CUED ? '재생준비 완료됨' :
                   event.data == -1 ? '시작되지 않음' : '예외';
 
-    if (event.data == YT.PlayerState.CUED)          event.target.playVideo();
-    // else if (event.data == YT.PlayerState.ENDED)    runNextSong();
+    if (event.data == YT.PlayerState.CUED)     event.target.playVideo();
+    if (event.data == YT.PlayerState.ENDED)    changeSong(statusCode.playingNum + 1);
 
     console.log('onPlayerStateChange 실행: ' + playerState);
 }
 
 /***********************************************************************************************/
 
-function runNextSong() {
-    let nextNum = statusCode.playingNum + 1;
-    console.log("next number: " + nextNum);
-    $(`.media:nth-child(${nextNum})`).click();
+function onClickSongTitle(params) {
+
+    let playingNum = Number($(params).find(".media-left #rank").text().trim());
+    changeSong(playingNum);
 }
 
-function changeSong(params) {
-    let playingNum = Number($(params).find(".media-left #rank").text().trim());
+function changeSong(playingNum) {
+    // 
     statusCode.playingNum = playingNum;
+
+    let title = $(`.media:nth-child(${playingNum})`).find(".media-body .media-heading").text().trim();
+    let artist = $(`.media:nth-child(${playingNum})`).find(".media-body span").text().trim();
     
-    let title = $(params).find(".media-body .media-heading").text().trim();
-    let artist = $(params).find(".media-body span").text().trim();
     let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
 
-    // debugger;
 
     let param = JSON.stringify({
         title: title,

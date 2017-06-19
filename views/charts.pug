@@ -19,7 +19,7 @@ html
             div#row2(class="row")
                 div#list(class="col-md-12 list-group")
                     each song, idx in charts
-                        a(class="media list-group-item", href="#", onclick="changeSong(this)")
+                        a(class="media list-group-item", href="#", onclick="onClickSongTitle(this)")
                             div(class="media-left")
                                 h3#rank= (idx + 1 < 10) ? "00" + (idx + 1) : (idx + 1 == 100) ? idx + 1 : "0" + (idx + 1)
                             div(class="media-body")
