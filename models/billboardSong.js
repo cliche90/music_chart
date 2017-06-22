@@ -1,11 +1,11 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let chartScheme = new Schema({
+let billboardSongSchema = new Schema({
     'rank': Number,
     'artist': String,
     'title': String,
-    'url': String
+    'videoId': String
 });
 
-module.exports = mongoose.model('song', chartScheme);
+module.exports = mongoose.model('billboardSong', billboardSongSchema);

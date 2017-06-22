@@ -22,7 +22,7 @@ function onYouTubeIframeAPIReady() {
         width: '100%',
         videoId: '',
         playerVars : {
-            'autoplay': 1,
+            // 'autoplay': 1,
             'controls': 1,
             'html5': 1,
         },
@@ -69,27 +69,17 @@ function onClickSongTitle(params) {
     changeSong(playingNum);
 }
 
-function changeSong(playingNum) {
-    // 
+function changeSong(playingNum) { 
     statusCode.playingNum = playingNum;
-
-    let title = $(`.media:nth-child(${playingNum})`).find(".media-body .media-heading").text().trim();
-    let artist = $(`.media:nth-child(${playingNum})`).find(".media-body span").text().trim();
     
     let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
 
-
-    let param = JSON.stringify({
-        title: title,
-        artist: artist
-    });
-
     $.ajax({
-        type: 'post',
+        type: 'get',
         url: url,
-        contentType: 'application/json',
-        dataType: 'json',
-        data: param,
+        data: {
+            rank: playingNum
+        },
         success: function (data) {
             statusCode.playingVideoId = data.videoId;
             player.cuePlaylist([data.videoId]);
