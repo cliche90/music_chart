@@ -15,7 +15,6 @@ module.exports = function () {
         console.log("[LOG] Music chart updated");
 
         let url = "http://www.billboard.com/charts/hot-100";
-        let charts = [];
 
         request(url, (error, response, body) => {
             if (error) {
@@ -35,8 +34,6 @@ module.exports = function () {
                     title: title,
                     artist: artist
                 };
-
-                charts.push(song);
 
                 BillboardSong.find({ "rank": rank }, (err, docs) => {
                     if (docs.length == 0) {
@@ -67,6 +64,7 @@ module.exports = function () {
                         });
                     }
                 });
+
             }, (error) => console.log(error));
         });
     };

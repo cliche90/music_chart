@@ -14,6 +14,7 @@ html
     body
             
         div(class="container")        
+            //- button(type="button", class="btn btn-info", data-toggle="collapse", data-target="#row1") collapsible
             div#row1(class="row")
                 div#videoFrame(class="col-md-12")
             div#row2(class="row")
@@ -25,6 +26,5 @@ html
                             div(class="media-body")
                                 h4(class="media-heading")= song.title
                                 span= song.artist
-    
 
         script(type="text/javascript", src="/js/charts.js")

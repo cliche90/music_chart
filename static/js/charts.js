@@ -39,11 +39,6 @@ function onPlayerError(event) {
 }
 
 function onPlayerReady(event) {
-    console.log('onPlayerReady 실행');
-    // 플레이어 자동실행 (주의: 모바일에서는 자동실행되지 않음)
-    // $(".media").first().click();
-
-    // event.target.playVideo();
     changeSong(1);
 }
 
@@ -58,7 +53,7 @@ function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.CUED)     event.target.playVideo();
     if (event.data == YT.PlayerState.ENDED)    changeSong(statusCode.playingNum + 1);
 
-    console.log('onPlayerStateChange 실행: ' + playerState);
+    // console.log('onPlayerStateChange 실행: ' + playerState);
 }
 
 /***********************************************************************************************/
