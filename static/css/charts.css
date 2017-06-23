@@ -1,12 +1,31 @@
+#navi {
+    border-radius: 0px !important
+}
+
+#naviHeader {
+    display:inline-block;
+    width:160px;
+}
+
+#naviContent {
+    display:inline-block;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    padding-left:0;
+    font-size:1em;
+    color:lightyellow;
+    width:calc(100% - 160px);
+}
+
 #row1 {
-    margin-top: 1%;
     height: 33%;
 }
 
 #row2 {
     margin-top: 2%;
     margin-bottom: 1%;
-    height: 60%;
+    height: 52%;
 }
 
 #videoFrame {

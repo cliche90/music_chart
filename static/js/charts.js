@@ -79,6 +79,8 @@ function changeSong(playingNum) {
         success: function (data) {
             statusCode.playingVideoId = data.videoId;
             player.cuePlaylist([data.videoId]);
+            document.title = '' + data.title + ' - ' + data.artist;
+            document.getElementById('naviContent').innerHTML = data.title + ' / ' + data.artist;
         }
     });
 }

@@ -12,11 +12,13 @@ html
         link(rel="shortcut icon", type="image/x-icon", href="/images/favicon.ico")
         link(rel="icon", type="image/x-icon", href="/images/favicon.ico")
     body
-            
+        nav#navi(class="navbar navbar-inverse" style="text-overflow:hidden")
+            div#naviHeader(class="navbar-brand") THE HOT 100 /
+            div#naviContent(class="navbar-brand" style="")
         div(class="container")        
             //- button(type="button", class="btn btn-info", data-toggle="collapse", data-target="#row1") collapsible
-            div#row1(class="row embed-responsive")
-                div#videoFrame(class="col-md-12 embed-responsive-item")
+            div#row1(class="row")
+                div#videoFrame(class="col-md-12")
             div#row2(class="row")
                 div#list(class="col-md-12 list-group")
                     each song in charts
