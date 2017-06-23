@@ -4,7 +4,7 @@ html
         meta(charset="utf-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1")
-        script(src='http://www.youtube.com/player_api')
+        script(src='https://www.youtube.com/iframe_api')
         script(type="text/javascript", src="/js/jquery-3.2.1.min.js")
         script(type="text/javascript", src="/js/bootstrap.min.js")
         link(rel="stylesheet", type="text/css", href="/css/bootstrap.min.css")
@@ -15,8 +15,8 @@ html
             
         div(class="container")        
             //- button(type="button", class="btn btn-info", data-toggle="collapse", data-target="#row1") collapsible
-            div#row1(class="row")
-                div#videoFrame(class="col-md-12")
+            div#row1(class="row embed-responsive embed-responsive-4by3")
+                div#videoFrame(class="col-md-12 embed-responsive-item")
             div#row2(class="row")
                 div#list(class="col-md-12 list-group")
                     each song in charts

@@ -16,13 +16,12 @@ let statusCode = {
 };
 
 function onYouTubeIframeAPIReady() {
-
     player = new YT.Player('videoFrame', {
         height: '100%',
         width: '100%',
         videoId: '',
         playerVars : {
-            // 'autoplay': 1,
+            'enablejsapi':1,
             'controls': 1,
             'html5': 1,
         },
@@ -65,7 +64,9 @@ function onClickSongTitle(params) {
 }
 
 function changeSong(playingNum) { 
-    statusCode.playingNum = playingNum;
+    
+    let totalCnt = 100;
+    statusCode.playingNum = playingNum == totalCnt ? playingNum % totalCnt : playingNum;
     
     let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
 
@@ -73,7 +74,7 @@ function changeSong(playingNum) {
         type: 'get',
         url: url,
         data: {
-            rank: playingNum
+            rank: statusCode.playingNum
         },
         success: function (data) {
             statusCode.playingVideoId = data.videoId;
