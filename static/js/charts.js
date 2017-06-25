@@ -55,9 +55,9 @@ function onPlayerStateChange(event) {
                         event.data == -1 ? '시작되지 않음' : '예외';
 
     if (event.data == YT.PlayerState.CUED) event.target.playVideo();
-    if (event.data == YT.PlayerState.PAUSED) $("#playPauseButton a i").text("play_arrow");
-    if (event.data == YT.PlayerState.PLAYING) $("#playPauseButton a i").text("pause");
-    if (event.data == YT.PlayerState.ENDED) {
+    else if (event.data == YT.PlayerState.PAUSED) $("#playPauseButton a i").text("play_arrow");
+    else if (event.data == YT.PlayerState.PLAYING) $("#playPauseButton a i").text("pause");
+    else if (event.data == YT.PlayerState.ENDED) {
         if (statusCode.playType == 'repeat') {
             changeSong(statusCode.playingNum + 1);
         } else if (statusCode.playType == 'repeat_one') {
