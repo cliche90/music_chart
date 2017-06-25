@@ -11,8 +11,8 @@ function nonhovering(param) {
 let player;
 let playerState;
 let statusCode = {
-    playingNum : 0,
-    playingVideoId : ''
+    playingNum: 0,
+    playingVideoId: ''
 };
 
 function onYouTubeIframeAPIReady() {
@@ -20,8 +20,8 @@ function onYouTubeIframeAPIReady() {
         height: '100%',
         width: '100%',
         videoId: '',
-        playerVars : {
-            'enablejsapi':1,
+        playerVars: {
+            'enablejsapi': 1,
             'controls': 1,
             'html5': 1,
         },
@@ -43,19 +43,46 @@ function onPlayerReady(event) {
 
 function onPlayerStateChange(event) {
     playerState = event.data == YT.PlayerState.ENDED ? '종료됨' :
-                  event.data == YT.PlayerState.PLAYING ? '재생 중' :
-                  event.data == YT.PlayerState.PAUSED ? '일시중지 됨' :
-                  event.data == YT.PlayerState.BUFFERING ? '버퍼링 중' :
-                  event.data == YT.PlayerState.CUED ? '재생준비 완료됨' :
-                  event.data == -1 ? '시작되지 않음' : '예외';
+        event.data == YT.PlayerState.PLAYING ? '재생 중' :
+            event.data == YT.PlayerState.PAUSED ? '일시중지 됨' :
+                event.data == YT.PlayerState.BUFFERING ? '버퍼링 중' :
+                    event.data == YT.PlayerState.CUED ? '재생준비 완료됨' :
+                        event.data == -1 ? '시작되지 않음' : '예외';
 
-    if (event.data == YT.PlayerState.CUED)     event.target.playVideo();
-    if (event.data == YT.PlayerState.ENDED)    changeSong(statusCode.playingNum + 1);
+    // debugger;
+    if (event.data == YT.PlayerState.CUED) event.target.playVideo();
+    if (event.data == YT.PlayerState.PAUSED) $("#playPauseButton a i").text("play_arrow");
+    if (event.data == YT.PlayerState.PLAYING) $("#playPauseButton a i").text("pause");
+    if (event.data == YT.PlayerState.ENDED) changeSong(statusCode.playingNum + 1);
 
     // console.log('onPlayerStateChange 실행: ' + playerState);
 }
 
+function playYoutube() {
+    player.playVideo();
+}
+function pauseYoutube() {
+    player.pauseVideo();
+}
+
 /***********************************************************************************************/
+
+function onClickPlayPauseButton(param) {
+
+    if (playerState == '재생 중') {
+        pauseYoutube();
+    } else {
+        playYoutube();
+    }
+}
+
+function onClickNext() {
+    changeSong(statusCode.playingNum + 1);
+}
+
+function onClickPrevious() {
+    changeSong(statusCode.playingNum - 1 == 0 ? 100 : statusCode.playingNum - 1);
+}
 
 function onClickSongTitle(params) {
 
@@ -63,11 +90,11 @@ function onClickSongTitle(params) {
     changeSong(playingNum);
 }
 
-function changeSong(playingNum) { 
-    
+function changeSong(playingNum) {
+
     let totalCnt = 100;
-    statusCode.playingNum = playingNum == totalCnt ? playingNum % totalCnt : playingNum;
-    
+    statusCode.playingNum = playingNum > totalCnt ? playingNum % totalCnt : playingNum;
+
     let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
 
     $.ajax({
@@ -85,5 +112,5 @@ function changeSong(playingNum) {
     });
 }
 
-window.onload = function(){
+window.onload = function () {
 }
