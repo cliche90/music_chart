@@ -6,13 +6,18 @@ function nonhovering(param) {
     $(param).removeClass("hovering");
 }
 
+function randomRange(n1, n2) {
+    return Math.floor((Math.random() * (n2 - n1 + 1)) + n1);
+}
+
 /***********************************************************************************************/
 
 let player;
 let playerState;
 let statusCode = {
     playingNum: 0,
-    playingVideoId: ''
+    playingVideoId: '',
+    playType: 'repeat'
 };
 
 function onYouTubeIframeAPIReady() {
@@ -49,13 +54,21 @@ function onPlayerStateChange(event) {
                     event.data == YT.PlayerState.CUED ? '재생준비 완료됨' :
                         event.data == -1 ? '시작되지 않음' : '예외';
 
-    // debugger;
     if (event.data == YT.PlayerState.CUED) event.target.playVideo();
     if (event.data == YT.PlayerState.PAUSED) $("#playPauseButton a i").text("play_arrow");
     if (event.data == YT.PlayerState.PLAYING) $("#playPauseButton a i").text("pause");
-    if (event.data == YT.PlayerState.ENDED) changeSong(statusCode.playingNum + 1);
+    if (event.data == YT.PlayerState.ENDED) {
+        if (statusCode.playType == 'repeat') {
+            changeSong(statusCode.playingNum + 1);
+        } else if (statusCode.playType == 'repeat_one') {
+            changeSong(statusCode.playingNum);
+        } else if (statusCode.playType == 'shuffle') {
+            let randNum = randomRange(1, 100);
+            changeSong(randNum == statusCode.playingNum ? randNum + 1 : randNum);
+        }
+    }
 
-    // console.log('onPlayerStateChange 실행: ' + playerState);
+    console.log('onPlayerStateChange 실행: ' + playerState);
 }
 
 function playYoutube() {
@@ -67,7 +80,24 @@ function pauseYoutube() {
 
 /***********************************************************************************************/
 
-function onClickPlayPauseButton(param) {
+function onClickPlayType(param) {
+
+    let playType = $(param).find("a i").text().trim();
+
+    if (playType == 'repeat') {
+        $(param).find("a i").text('repeat_one')
+        statusCode.playType = 'repeat_one';
+    } else if (playType == 'repeat_one') {
+        $(param).find("a i").text('shuffle')
+        statusCode.playType = 'shuffle';
+    } else if (playType == 'shuffle') {
+        $(param).find("a i").text('repeat')
+        statusCode.playType = 'repeat';
+    }
+
+}
+
+function onClickPlayPauseButton() {
 
     if (playerState == '재생 중') {
         pauseYoutube();
@@ -92,8 +122,17 @@ function onClickSongTitle(params) {
 
 function changeSong(playingNum) {
 
+    $(".media").eq(statusCode.playingNum - 1).css("background-color", "white");
+
     let totalCnt = 100;
     statusCode.playingNum = playingNum > totalCnt ? playingNum % totalCnt : playingNum;
+
+    $(".media").eq(statusCode.playingNum - 1).css("background-color", "beige");
+
+    let top = $('#list').scrollTop() - $('#list').offset().top + $(".media").eq(statusCode.playingNum - 1).offset().top 
+    $('#list').animate({
+        scrollTop: top
+    }, 800);
 
     let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
 

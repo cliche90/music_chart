@@ -1,4 +1,4 @@
-html
+html(class="bts")
     title THE HOT 100
     head
         meta(charset="utf-8")
@@ -6,21 +6,29 @@ html
         meta(name="viewport", content="width=device-width, initial-scale=1")
         script(src='https://www.youtube.com/iframe_api')
         script(type="text/javascript", src="/js/jquery-3.2.1.min.js")
-        script(type="text/javascript", src="/js/bootstrap.min.js")
+
+        <!-- Material Design -->
         script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js")
-  
-        link(type="text/css", rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css")
+        link(type="text/css", rel="stylesheet", href="/css/custom_materialize.css")
         link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
-        link(rel="stylesheet", type="text/css", href="/css/bootstrap.min.css")
+
+        <!-- Bootstrap -->
+        script(type="text/javascript", src="/js/bootstrap.min.js")
+        script(type="text/javascript", src="/js/dropdowns-enhancement.js")
+        link(rel="stylesheet", type="text/css", href="/css/custom_bootstrap.css")
+        link(rel="stylesheet", type="text/css", href="/css/dropdowns-enhancement.min.css")
+
         link(rel="stylesheet", type="text/css", href="/css/charts.css")
+
         link(rel="shortcut icon", type="image/x-icon", href="/images/favicon.ico")
         link(rel="icon", type="image/x-icon", href="/images/favicon.ico")
+
     body
         nav#navi(class="navbar navbar-inverse" style="text-overflow:hidden")
             div#naviHeader(class="navbar-brand") THE HOT 100 /
-            div#naviContent(class="navbar-brand" style="")
-        div(class="container")        
-            //- button(type="button", class="btn btn-info", data-toggle="collapse", data-target="#row1") collapsible
+            div#naviContent(class="navbar-brand")
+        
+        div(class="container")
             div#row1(class="row")
                 div#videoFrame(class="col-md-12")
             div#row2(class="row")
@@ -32,20 +40,24 @@ html
                             div(class="media-body")
                                 h4(class="media-heading")= song.title
                                 span= song.artist
-            
-            div(class="fixed-action-btn horizontal")
-                a(class="btn-floating btn-large blue-grey darken-4")
-                    i(class="large material-icons") library_music
-                ul
-                    li(onclick="onClickPrevious()")
-                        a(class="btn-floating blue-grey darken-5")
-                            i(class="material-icons") skip_previous
-                    li#playPauseButton(onclick="onClickPlayPauseButton(this)")
-                        a(class="btn-floating blue-grey darken-5")
-                            i(class="material-icons") pause
-                    li(onclick="onClickNext()")
-                        a(class="btn-floating blue-grey darken-5")
-                            i(class="material-icons") skip_next
-        
-
+                                
         script(type="text/javascript", src="/js/charts.js")
+        
+    footer(class="mat")
+                    
+        div(class="fixed-action-btn horizontal click-to-toggle")
+            a(class="btn-floating btn-large blue-grey darken-4")
+                i(class="large material-icons") library_music
+            ul
+                li(onclick="onClickPrevious()")
+                    a(class="btn-floating blue-grey darken-5 waves-effect waves-circle waves-light")
+                        i(class="material-icons") skip_previous
+                li#playPauseButton(onclick="onClickPlayPauseButton()")
+                    a(class="btn-floating blue-grey darken-5 waves-effect waves-circle waves-light")
+                        i(class="material-icons") pause
+                li(onclick="onClickNext()")
+                    a(class="btn-floating blue-grey darken-5 waves-effect waves-circle waves-light")
+                        i(class="material-icons") skip_next
+                li(onclick="onClickPlayType(this)")
+                    a(class="btn-floating red darken-1 waves-effect waves-circle waves-light")
+                        i(class="material-icons") repeat
