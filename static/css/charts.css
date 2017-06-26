@@ -1,6 +1,7 @@
 #navi {
     border-radius: 0px !important;
     height: 5%;
+    margin-bottom: 15px;
 }
 
 #naviHeader {
@@ -26,7 +27,7 @@
 #row2 {
     margin-top: 2%;
     margin-bottom: 1%;
-    height: 52%;
+    height: 54%;
 }
 
 #videoFrame {
