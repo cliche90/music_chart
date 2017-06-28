@@ -1,7 +1,7 @@
 #navi {
     border-radius: 0px !important;
-    height: 5%;
-    margin-bottom: 15px;
+    height: 51px;
+    margin-bottom: 0;
 }
 
 #naviHeader {
@@ -23,16 +23,20 @@
     color:lightyellow;
     width:calc(100% - 210px);
 }
-
+.container {
+    height: calc(100% - 51px);
+    padding-top: 1%;
+    padding-bottom: 3%;
+}
 #row1 {
-    height: 33%;
+    height: 38%;
     margin-bottom: 2%;
 }
 
 #row2 {
-    margin-top: 0%;
-    margin-bottom: 1%;
-    height: 55%;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 62%;
 }
 
 #videoFrame {

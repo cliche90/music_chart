@@ -85,24 +85,18 @@ onClickEye = function() {
 
     if(statusCode.isOpen) {
         $("#row1").slideUp(1600);
-        $("#row2").animate({ height: '89%' }, 1600);
+        $("#row2").animate({ height: '100%' }, 1600);
 
         $("#eyeBtn").removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close")
         statusCode.isOpen = false;
     } else {
         $("#row1").slideDown(1600);
-        $("#row2").animate({ height: '55%' }, 1600);
+        $("#row2").animate({ height: '62%' }, 1600);
 
         $("#eyeBtn").removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open")
         statusCode.isOpen = true;
     }
 }
-
-onClickOpenEye = function () {
-   
-}
-
-
 
 function onClickPlayType(param) {
 
