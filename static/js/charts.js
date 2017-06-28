@@ -91,7 +91,7 @@ onClickEye = function() {
         statusCode.isOpen = false;
     } else {
         $("#row1").slideDown(1600);
-        $("#row2").animate({ height: '62%' }, 1600);
+        $("#row2").animate({ height: '60%' }, 1600);
 
         $("#eyeBtn").removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open")
         statusCode.isOpen = true;

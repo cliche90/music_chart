@@ -10,7 +10,7 @@
 }
 
 #eyeBtn {
-    width: 50px
+    width: 50px;
 }
 
 #naviContent {
@@ -26,7 +26,7 @@
 .container {
     height: calc(100% - 51px);
     padding-top: 1%;
-    padding-bottom: 3%;
+    padding-bottom: 2%;
 }
 #row1 {
     height: 38%;
@@ -36,7 +36,7 @@
 #row2 {
     margin-top: 0;
     margin-bottom: 0;
-    height: 62%;
+    height: 60%;
 }
 
 #videoFrame {
