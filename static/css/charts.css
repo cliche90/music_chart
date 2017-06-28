@@ -9,6 +9,10 @@
     width:160px;
 }
 
+#eyeBtn {
+    width: 50px
+}
+
 #naviContent {
     display:inline-block;
     overflow:hidden;
@@ -17,17 +21,18 @@
     padding-left:0;
     font-size:1em;
     color:lightyellow;
-    width:calc(100% - 160px);
+    width:calc(100% - 210px);
 }
 
 #row1 {
     height: 33%;
+    margin-bottom: 2%;
 }
 
 #row2 {
-    margin-top: 2%;
+    margin-top: 0%;
     margin-bottom: 1%;
-    height: 54%;
+    height: 55%;
 }
 
 #videoFrame {
