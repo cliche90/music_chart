@@ -29,6 +29,7 @@ function onYouTubeIframeAPIReady() {
         playerVars: {
             'enablejsapi': 1,
             'controls': 1,
+            'autoplay': 1,
             'html5': 1,
         },
         events: {
