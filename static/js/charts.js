@@ -84,6 +84,9 @@ function pauseYoutube() {
 
 onClickEye = function() {
 
+    $("#row1").stop(true, false);
+    $("#row2").stop(true, false);
+
     if(statusCode.isOpen) {
         $("#row1").slideUp(1600);
         $("#row2").animate({ height: '100%' }, 1600);
@@ -147,6 +150,8 @@ function changeSong(playingNum) {
     statusCode.playingNum = playingNum > totalCnt ? playingNum % totalCnt : playingNum;
 
     $(".media").eq(statusCode.playingNum - 1).css("background-color", "beige");
+
+    $('#list').stop(true, false);
 
     let top = $('#list').scrollTop() - $('#list').offset().top + $(".media").eq(statusCode.playingNum - 1).offset().top 
     $('#list').animate({
