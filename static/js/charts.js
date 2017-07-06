@@ -149,8 +149,6 @@ function changeSong(playingNum) {
     let totalCnt = 100;
     statusCode.playingNum = playingNum > totalCnt ? playingNum % totalCnt : playingNum;
 
-    $('#list').stop(true, false);
-
     let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
 
     $.ajax({
@@ -166,6 +164,8 @@ function changeSong(playingNum) {
             document.getElementById('naviContent').innerHTML = data.title + ' / ' + data.artist;
 
             $(".media").eq(statusCode.playingNum - 1).css("background-color", "beige");
+
+            $('#list').stop(true, false);
 
             let top = $('#list').scrollTop() - $('#list').offset().top + $(".media").eq(statusCode.playingNum - 1).offset().top 
             $('#list').animate({
