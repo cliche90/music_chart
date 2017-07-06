@@ -151,7 +151,7 @@ function changeSong(playingNum) {
     $(".media").eq(beforPlayingNum - 1).css("background-color", "white");
     $(".media").eq(nextPlayingNum - 1).css("background-color", "beige");
 
-    let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
+    statusCode.playingNum = nextPlayingNum;
 
     $('#list').stop(true, false);
 
@@ -159,6 +159,8 @@ function changeSong(playingNum) {
     $('#list').animate({
         scrollTop: top
     }, 800);
+
+    let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
 
     $.ajax({
         type: 'get',
@@ -168,12 +170,10 @@ function changeSong(playingNum) {
         },
         success: function (data) {
             statusCode.playingVideoId = data.videoId;
-            statusCode.playingNum = data.rank;
+            if (statusCode.playingNum != data.rank) statusCode.playingNum = data.rank;
             player.cuePlaylist([data.videoId]);
             document.title = '' + data.title + ' - ' + data.artist;
             document.getElementById('naviContent').innerHTML = data.title + ' / ' + data.artist;
-
-            
         }
     });
 }
