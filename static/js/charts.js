@@ -70,7 +70,7 @@ function onPlayerStateChange(event) {
         }
     }
 
-    console.log('onPlayerStateChange 실행: ' + playerState);
+    // console.log('onPlayerStateChange 실행: ' + playerState);
 }
 
 function playYoutube() {
@@ -164,7 +164,7 @@ function changeSong(playingNum) {
             player.cuePlaylist([data.videoId]);
             document.title = '' + data.title + ' - ' + data.artist;
             document.getElementById('naviContent').innerHTML = data.title + ' / ' + data.artist;
-            
+
             $(".media").eq(statusCode.playingNum - 1).css("background-color", "beige");
 
             let top = $('#list').scrollTop() - $('#list').offset().top + $(".media").eq(statusCode.playingNum - 1).offset().top 
