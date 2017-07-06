@@ -155,7 +155,7 @@ function changeSong(playingNum) {
 
     $('#list').stop(true, false);
 
-    let top = $('#list').scrollTop() - $('#list').offset().top + $(".media").eq(statusCode.playingNum - 1).offset().top 
+    let top = $('#list').scrollTop() - $('#list').offset().top + $(".media").eq(nextPlayingNum - 1).offset().top 
     $('#list').animate({
         scrollTop: top
     }, 800);
