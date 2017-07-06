@@ -55,6 +55,7 @@ module.exports = function () {
 
                         docs[0].artist = artist;
                         docs[0].title = title;
+			docs[0].videoId = "";
 
                         docs[0].save((err) => {
                             if(err) {

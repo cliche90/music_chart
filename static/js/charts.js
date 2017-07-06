@@ -29,6 +29,7 @@ function onYouTubeIframeAPIReady() {
         playerVars: {
             'enablejsapi': 1,
             'controls': 1,
+            'autoplay': 1,
             'html5': 1,
         },
         events: {
@@ -82,6 +83,9 @@ function pauseYoutube() {
 /***********************************************************************************************/
 
 onClickEye = function() {
+
+    $("#row1").stop(true, false);
+    $("#row2").stop(true, false);
 
     if(statusCode.isOpen) {
         $("#row1").slideUp(1600);
@@ -144,6 +148,8 @@ function changeSong(playingNum) {
 
     let totalCnt = 100;
     statusCode.playingNum = playingNum > totalCnt ? playingNum % totalCnt : playingNum;
+
+    $('#list').stop(true, false);
 
     let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
 
