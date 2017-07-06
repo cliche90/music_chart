@@ -144,14 +144,12 @@ function onClickSongTitle(params) {
 
 function changeSong(playingNum) {
 
+    $(".media").eq(statusCode.playingNum - 1).css("background-color", "white");
+
     let totalCnt = 100;
-    let beforPlayingNum = statusCode.playingNum;
-    let nextPlayingNum = playingNum > totalCnt ? playingNum % totalCnt : playingNum;
+    statusCode.playingNum = playingNum > totalCnt ? playingNum % totalCnt : playingNum;
 
-    $(".media").eq(beforPlayingNum - 1).css("background-color", "white");
     $(".media").eq(nextPlayingNum - 1).css("background-color", "beige");
-
-    statusCode.playingNum = nextPlayingNum;
 
     $('#list').stop(true, false);
 
@@ -166,11 +164,10 @@ function changeSong(playingNum) {
         type: 'get',
         url: url,
         data: {
-            rank: nextPlayingNum
+            rank: statusCode.playingNum
         },
         success: function (data) {
             statusCode.playingVideoId = data.videoId;
-            if (statusCode.playingNum != data.rank) statusCode.playingNum = data.rank;
             player.cuePlaylist([data.videoId]);
             document.title = '' + data.title + ' - ' + data.artist;
             document.getElementById('naviContent').innerHTML = data.title + ' / ' + data.artist;
