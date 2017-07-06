@@ -145,13 +145,6 @@ function changeSong(playingNum) {
     let totalCnt = 100;
     statusCode.playingNum = playingNum > totalCnt ? playingNum % totalCnt : playingNum;
 
-    $(".media").eq(statusCode.playingNum - 1).css("background-color", "beige");
-
-    let top = $('#list').scrollTop() - $('#list').offset().top + $(".media").eq(statusCode.playingNum - 1).offset().top 
-    $('#list').animate({
-        scrollTop: top
-    }, 800);
-
     let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
 
     $.ajax({
@@ -161,6 +154,14 @@ function changeSong(playingNum) {
             rank: statusCode.playingNum
         },
         success: function (data) {
+
+            $(".media").eq(statusCode.playingNum - 1).css("background-color", "beige");
+
+            let top = $('#list').scrollTop() - $('#list').offset().top + $(".media").eq(statusCode.playingNum - 1).offset().top 
+            $('#list').animate({
+                scrollTop: top
+            }, 800);
+
             statusCode.playingVideoId = data.videoId;
             player.cuePlaylist([data.videoId]);
             document.title = '' + data.title + ' - ' + data.artist;
