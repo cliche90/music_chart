@@ -151,6 +151,15 @@ function changeSong(playingNum) {
 
     let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
 
+    $('#list').stop(true, false);
+
+    let top = $('#list').scrollTop() - $('#list').offset().top + $(".media").eq(statusCode.playingNum - 1).offset().top 
+    $('#list').animate({
+        scrollTop: top
+    }, 800);
+
+    $(".media").eq(statusCode.playingNum - 1).css("background-color", "beige");
+
     $.ajax({
         type: 'get',
         url: url,
@@ -163,14 +172,7 @@ function changeSong(playingNum) {
             document.title = '' + data.title + ' - ' + data.artist;
             document.getElementById('naviContent').innerHTML = data.title + ' / ' + data.artist;
 
-            $(".media").eq(statusCode.playingNum - 1).css("background-color", "beige");
-
-            $('#list').stop(true, false);
-
-            let top = $('#list').scrollTop() - $('#list').offset().top + $(".media").eq(statusCode.playingNum - 1).offset().top 
-            $('#list').animate({
-                scrollTop: top
-            }, 800);
+            
         }
     });
 }
