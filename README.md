@@ -1,12 +1,12 @@
 # Music Chart by Crawling
 
-    npm install express
-    npm install pug
-    npm install request
-    npm install cheerio
-    npm install mongoose
+## install prerequsites
+```bash
+$ npm install
+```
 
-
-    sudo apt-get install mongodb
-    sudo service monogdb start
-
+## install & start mongodb service
+```bash
+$ sudo apt-get install mongodb
+$ sudo service monogdb start
+```

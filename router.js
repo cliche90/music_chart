@@ -5,7 +5,7 @@ module.exports = function () {
     let mongoose = require('mongoose');
     let urlencode = require('urlencode');
 
-    mongoose.connect('mongodb://localhost/music_charts');
+    mongoose.connect('mongodb://localhost/music_charts', { useNewUrlParser: true });
     let BillboardSong = require('./models/billboardSong');
 
     let router = express.Router();
@@ -22,12 +22,15 @@ module.exports = function () {
             }
 
             let $ = cheerio.load(body);
-            let chartEl = $("div.chart-row__main-display");
+            let chartNumberOneTitle = $('.chart-number-one__title').text().trim();
+            let chartNumberOneArtist = $('.chart-number-one__artist').text().trim();
+            let chartNumberOne = $(`<div class="chart-list-item" data-rank="1" data-artist="${ chartNumberOneArtist }" data-title="${ chartNumberOneTitle }"></div>`);
+            let chartEl = $('.chart-list-item').add(chartNumberOne);
 
             chartEl.each(function (idx) {
-                let rank = Number($(this).find(".chart-row__rank .chart-row__current-week").text().trim());
-                let title = $(this).find(".chart-row__song").text().trim();
-                let artist = $(this).find(".chart-row__artist").text().trim();
+                let rank = Number($(this).attr('data-rank'));
+                let title = $(this).attr('data-title').trim();
+                let artist = $(this).attr('data-artist').trim();
 
                 let song = {
                     rank: rank,
@@ -55,7 +58,7 @@ module.exports = function () {
 
                         docs[0].artist = artist;
                         docs[0].title = title;
-			docs[0].videoId = "";
+			            docs[0].videoId = "";
 
                         docs[0].save((err) => {
                             if(err) {
