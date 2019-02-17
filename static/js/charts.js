@@ -177,6 +177,6 @@ function changeSong(playingNum) {
 
 window.onload = function () {
     if (document.getElementById('videoFrame').innerText === "") {
-        setTimeout(() => onYouTubeIframeAPIReady(), 500);
+        setTimeout(() => onYouTubeIframeAPIReady(), 700);
     }
 }
