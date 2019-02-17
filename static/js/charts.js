@@ -37,7 +37,7 @@ function onYouTubeIframeAPIReady() {
             'onStateChange': onPlayerStateChange,
             'onError': onPlayerError
         },
-        host: 'https://www.youtube.com',
+        host: 'https://www.youtube.com'
     });
 }
 
@@ -174,5 +174,9 @@ function changeSong(playingNum) {
     });
 }
 
+
 window.onload = function () {
+    if (document.getElementById('videoFrame').innerText === "") {
+        setTimeout(() => onYouTubeIframeAPIReady(), 500);
+    }
 }
