@@ -157,7 +157,7 @@ function changeSong(playingNum) {
         scrollTop: top
     }, 800);
 
-    let url = document.URL.replace(new RegExp("\/charts.*"), "") + "/songChange";
+    let url = document.URL.replace(new RegExp("\/.*"), "") + "/songChange";
 
     $.ajax({
         type: 'get',

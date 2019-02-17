@@ -1,5 +1,6 @@
 let express = require('express');
 let pug = require('pug');
+let port = 3001;
 let bodyParser = require('body-parser');
 
 let app = express();
@@ -12,4 +13,4 @@ app.locals.pretty = true;
 let router = require('./router')();
 app.use(router);
 
-app.listen(3001, () => console.log('listen 3001 port'));
+app.listen(port, () => console.log(`listen on ${port} port`));

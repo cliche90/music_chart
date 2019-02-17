@@ -128,10 +128,6 @@ module.exports = function () {
         });
     };
 
-    let renderRoot = (res) => {
-        res.send("Hello!!");
-    };
-
     let renderCharts = (res) => {
         BillboardSong.find()
             .sort({ "rank": 1 })
@@ -170,8 +166,7 @@ module.exports = function () {
     updateMusicChart();
     setInterval(updateMusicChart, 60000 * 60);
 
-    router.get('/', (req, res) => renderRoot(res));
-    router.get('/charts', (req, res) => renderCharts(res));
+    router.get('/', (req, res) => renderCharts(res));
     router.get('/songChange', (req, res) => songChange(req, res));
 
     return router;
