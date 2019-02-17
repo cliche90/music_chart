@@ -174,6 +174,11 @@ function changeSong(playingNum) {
     });
 }
 
+$(window).on('hashchange', function(e){
+    window.history.pushState("", document.title, window.location.pathname);
+});
+
 
 window.onload = function () {
 }
+
