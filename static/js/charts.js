@@ -36,7 +36,8 @@ function onYouTubeIframeAPIReady() {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange,
             'onError': onPlayerError
-        }
+        },
+        host: 'https://www.youtube.com',
     });
 }
 
