@@ -7,6 +7,6 @@ $ npm install
 
 ## install & start mongodb service
 ```bash
-$ sudo apt-get install mongodb
+$ sudo apt install mongodb -y
 $ sudo service monogdb start
 ```
